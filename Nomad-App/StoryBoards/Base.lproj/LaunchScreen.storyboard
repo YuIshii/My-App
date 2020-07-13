@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FZW-Xs-rhv">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="3am-BL-Du6">
+            <objects>
+                <viewController id="FZW-Xs-rhv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tcb-BZ-GdW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nomad" translatesAutoresizingMaskIntoConstraints="NO" id="kQK-bb-mRV">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="WLe-qf-OhU"/>
+                                    <constraint firstAttribute="width" constant="300" id="mC7-Jx-bXy"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="kQK-bb-mRV" firstAttribute="centerY" secondItem="tcb-BZ-GdW" secondAttribute="centerY" id="BcB-3k-aQo"/>
+                            <constraint firstItem="kQK-bb-mRV" firstAttribute="centerX" secondItem="tcb-BZ-GdW" secondAttribute="centerX" id="PNJ-5D-PFb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dDY-5p-mlu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7lb-Wy-ZHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Nomad" width="128" height="128"/>
+    </resources>
+</document>

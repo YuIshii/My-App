@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7mD-FP-BOW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Email Verification View Controller-->
+        <scene sceneID="NaW-43-Ztz">
+            <objects>
+                <viewController storyboardIdentifier="EmailVerification" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7mD-FP-BOW" customClass="EmailVerificationViewController" customModule="Nomad_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yYX-0g-wxR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="eLf-Mm-94u">
+                                <rect key="frame" x="10" y="114" width="394" height="368"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="確認メールを送信しました" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGt-65-hUo">
+                                        <rect key="frame" x="74.5" y="0.0" width="245" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <color key="textColor" red="0.23529411759999999" green="0.35294117650000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="入力されたメールアドレスに確認メールを送信いたしました。登録を完了するためにはこちらからお送りするメールに記載されたリンクをクリックする必要があります。このメールが届かない場合は、迷惑フォルダに分類されている可能性がありますので、ご確認ください。" translatesAutoresizingMaskIntoConstraints="NO" id="pWh-Pj-n6N">
+                                        <rect key="frame" x="0.0" y="54" width="394" height="314"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="pWh-Pj-n6N" firstAttribute="leading" secondItem="eLf-Mm-94u" secondAttribute="leadingMargin" id="PhA-jQ-CjG"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUN-G3-AAz">
+                                <rect key="frame" x="160.5" y="803" width="93" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="1xC-lA-nDc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="戻る">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="back:" destination="7mD-FP-BOW" eventType="touchUpInside" id="tbF-9N-2gu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IcO-zO-bKl" firstAttribute="bottom" secondItem="wUN-G3-AAz" secondAttribute="bottom" constant="30" id="6SX-h7-3sE"/>
+                            <constraint firstItem="IcO-zO-bKl" firstAttribute="trailing" secondItem="eLf-Mm-94u" secondAttribute="trailing" constant="10" id="9p3-GO-CoI"/>
+                            <constraint firstItem="eLf-Mm-94u" firstAttribute="centerX" secondItem="yYX-0g-wxR" secondAttribute="centerX" id="KHI-Yb-Kld"/>
+                            <constraint firstItem="wUN-G3-AAz" firstAttribute="centerX" secondItem="yYX-0g-wxR" secondAttribute="centerX" id="KJB-od-bLR"/>
+                            <constraint firstItem="eLf-Mm-94u" firstAttribute="top" secondItem="IcO-zO-bKl" secondAttribute="top" constant="70" id="YNM-OH-1UH"/>
+                            <constraint firstItem="eLf-Mm-94u" firstAttribute="leading" secondItem="IcO-zO-bKl" secondAttribute="leading" constant="10" id="cKx-es-7aH"/>
+                            <constraint firstItem="IcO-zO-bKl" firstAttribute="bottom" secondItem="eLf-Mm-94u" secondAttribute="bottom" constant="380" id="zX1-PC-P1E"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IcO-zO-bKl"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Sy6-o7-y1v"/>
+                    <connections>
+                        <outlet property="backButton" destination="wUN-G3-AAz" id="Pth-bS-NJc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B0v-Wl-FQ5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="413.60000000000002" y="-242.42878560719643"/>
+        </scene>
+    </scenes>
+</document>

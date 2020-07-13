@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="RMf-IT-lyp">
+            <objects>
+                <navigationController id="Vx3-IS-dUf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gP0-iu-TIi">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BO2-Qh-bru" kind="relationship" relationship="rootViewController" id="5KY-mz-HxK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5vf-AM-FYO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="82"/>
+        </scene>
+        <!--Chat Room View Controller-->
+        <scene sceneID="uqg-6A-8Yg">
+            <objects>
+                <viewController storyboardIdentifier="ChatRoomViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BO2-Qh-bru" customClass="ChatRoomViewController" customModule="Nomad_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Szj-Ig-rFO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LE-RF-uUN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="unfocus:" destination="BO2-Qh-bru" eventType="touchUpInside" id="X8b-4A-D9l"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xi1-RE-lag">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xi1-RE-lag" firstAttribute="trailing" secondItem="pD0-Vs-U1u" secondAttribute="trailing" id="3gO-uj-kfz"/>
+                            <constraint firstItem="xi1-RE-lag" firstAttribute="leading" secondItem="pD0-Vs-U1u" secondAttribute="leading" id="MUM-Br-kGV"/>
+                            <constraint firstItem="xi1-RE-lag" firstAttribute="top" secondItem="Szj-Ig-rFO" secondAttribute="top" id="SmU-xM-yfd"/>
+                            <constraint firstAttribute="bottom" secondItem="xi1-RE-lag" secondAttribute="bottom" id="zfU-vz-3pn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pD0-Vs-U1u"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kmi-2G-zvc">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Knf-HJ-M3t"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="chatRoomTableView" destination="xi1-RE-lag" id="1v3-2F-Att"/>
+                        <outlet property="unfocusBtn" destination="0LE-RF-uUN" id="yFt-29-zcs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ndv-Pz-rZG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1346.376811594203" y="81.696428571428569"/>
+        </scene>
+    </scenes>
+</document>

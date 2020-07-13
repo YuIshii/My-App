@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="title1" rowHeight="52" id="qrx-KB-g3r" customClass="Title1TableViewCell" customModule="Nomad_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="435" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="qrx-KB-g3r" id="HrV-ji-Jeq">
+                <rect key="frame" x="0.0" y="0.0" width="435" height="52"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="急上昇スレッド" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jlm-o0-pMi">
+                        <rect key="frame" x="41" y="12.5" width="121.5" height="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trending2" translatesAutoresizingMaskIntoConstraints="NO" id="Cev-tw-El1">
+                        <rect key="frame" x="10" y="12.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="F1w-ff-E0l"/>
+                            <constraint firstAttribute="width" constant="25" id="T2j-ef-m8g"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="Cev-tw-El1" firstAttribute="leading" secondItem="HrV-ji-Jeq" secondAttribute="leading" constant="10" id="5ZZ-2W-XUD"/>
+                    <constraint firstAttribute="bottom" secondItem="Jlm-o0-pMi" secondAttribute="bottom" id="8KT-rT-yHn"/>
+                    <constraint firstAttribute="bottom" secondItem="Cev-tw-El1" secondAttribute="bottom" constant="3" id="EAu-Ka-lIM"/>
+                    <constraint firstItem="Jlm-o0-pMi" firstAttribute="top" secondItem="HrV-ji-Jeq" secondAttribute="top" constant="12.5" id="Jnb-Jm-Gbx"/>
+                    <constraint firstItem="Jlm-o0-pMi" firstAttribute="centerY" secondItem="Cev-tw-El1" secondAttribute="centerY" id="MHa-03-hLR"/>
+                    <constraint firstItem="Jlm-o0-pMi" firstAttribute="leading" secondItem="Cev-tw-El1" secondAttribute="trailing" constant="6" id="pA0-nH-N8Q"/>
+                    <constraint firstItem="Jlm-o0-pMi" firstAttribute="bottom" secondItem="Cev-tw-El1" secondAttribute="bottom" id="vUd-vz-dYC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="rlx-Mk-w0D"/>
+            <point key="canvasLocation" x="123.91304347826087" y="99.107142857142847"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="trending2" width="128" height="128"/>
+    </resources>
+</document>
