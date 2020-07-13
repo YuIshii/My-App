@@ -66,14 +66,15 @@ class ViewedViewController: UIViewController, UITableViewDataSource, UITableView
     
     @objc func refresh(sender: UIRefreshControl) {
         
-        blockCheck()
-        
         let postsRef = Firestore.firestore().collection("posts")
         listener = postsRef.addSnapshotListener() { (querySnapshot, error) in
             if let error = error {
                 print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                 return
             }
+            
+            self.blockCheck()
+            
             // 取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
             //flatMapを使ってnilを取り除く
             self.postArray = querySnapshot!.documents.flatMap { document in
@@ -102,8 +103,6 @@ class ViewedViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
         
-        blockCheck()
-        
         if Auth.auth().currentUser != nil {
             // ログイン済み
             if listener == nil {
@@ -115,6 +114,9 @@ class ViewedViewController: UIViewController, UITableViewDataSource, UITableView
                         print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                         return
                     }
+                    
+                    self.blockCheck()
+                    
                     // 取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
                     //flatMapを使ってnilを取り除く
                     self.postArray = querySnapshot!.documents.flatMap { document in

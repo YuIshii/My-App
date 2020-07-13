@@ -51,8 +51,6 @@ class ChatRoomViewController: UIViewController {
         //タブバーの色
         self.tabBarController?.tabBar.barTintColor = UIColor.white
         
-        blockCheck()
-        
         fetchPosts()
         fetchMessages()
         
@@ -135,8 +133,6 @@ class ChatRoomViewController: UIViewController {
     @objc func refresh(sender: UIRefreshControl) {
         print("refresh")
         
-        blockCheck()
-        
         let postsRef = Firestore.firestore().collection("posts").document(postdata!.id)
         listener = postsRef.addSnapshotListener() { (documentSnapshot, error) in
             guard let document = documentSnapshot else {
@@ -152,6 +148,9 @@ class ChatRoomViewController: UIViewController {
                 print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                 return
             }
+            
+            self.blockCheck()
+            
             self.messages = querySnapshot!.documents.flatMap { document in
                 print("DEBUG_PRINT: document取得 \(document.documentID)")
                 let message = Message(document: document)
@@ -197,6 +196,9 @@ class ChatRoomViewController: UIViewController {
                 print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                 return
             }
+            
+            self.blockCheck()
+            
             self.messages = querySnapshot!.documents.flatMap { document in
                 print("DEBUG_PRINT: document取得 \(document.documentID)")
                 let message = Message(document: document)

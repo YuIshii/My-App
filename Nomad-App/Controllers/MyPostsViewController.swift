@@ -64,14 +64,15 @@ class MyPostsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @objc func refresh(sender: UIRefreshControl) {
         
-        blockCheck()
-        
         let postsRef = Firestore.firestore().collection("posts").order(by: "date", descending: true)
         listener = postsRef.addSnapshotListener() { (querySnapshot, error) in
             if let error = error {
                 print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                 return
             }
+            
+            self.blockCheck()
+            
             // 取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
             self.postArray = querySnapshot!.documents.flatMap { document in
                 print("DEBUG_PRINT: document取得 \(document.documentID)")
@@ -98,8 +99,6 @@ class MyPostsViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
         
-        blockCheck()
-        
         if Auth.auth().currentUser != nil {
             // ログイン済み
             if listener == nil {
@@ -110,6 +109,9 @@ class MyPostsViewController: UIViewController, UITableViewDataSource, UITableVie
                         print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                         return
                     }
+                    
+                    self.blockCheck()
+                    
                     // 取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
                     self.postArray = querySnapshot!.documents.flatMap { document in
                         print("DEBUG_PRINT: document取得 \(document.documentID)")

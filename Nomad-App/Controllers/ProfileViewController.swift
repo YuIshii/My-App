@@ -104,14 +104,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @objc func refresh(sender: UIRefreshControl) {
         
-        blockCheck()
-        
         let postsRef = Firestore.firestore().collection("posts").order(by: "date", descending: true)
         listener = postsRef.addSnapshotListener() { (querySnapshot, error) in
             if let error = error {
                 print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                 return
             }
+            
+            self.blockCheck1()
+            
             //自分の投稿のみ
             self.postArray = querySnapshot!.documents.flatMap { document in
                 print("DEBUG_PRINT: document取得 \(document.documentID)")
@@ -128,6 +129,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
                 return nil
             }
+            
+            self.blockCheck2()
+            
             self.postArray2 = querySnapshot!.documents.flatMap { document in
                 print("DEBUG_PRINT: document取得 \(document.documentID)")
                 let data = document.data()
@@ -145,6 +149,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.postArray2.sort {
                 $0.likedTime > $1.likedTime
             }
+            
+            self.blockCheck3()
+            
             //参加中の投稿のみ
             self.postArray3 = querySnapshot!.documents.flatMap { document in
                 print("DEBUG_PRINT: document取得 \(document.documentID)")
@@ -197,8 +204,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let userName = Auth.auth().currentUser?.displayName
         nameLabel.text = userName
         
-        blockCheck()
-        
         if Auth.auth().currentUser != nil {
             // ログイン済み
             if listener == nil {
@@ -210,6 +215,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                         print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                         return
                     }
+                    
+                    self.blockCheck1()
+                    
                     //自分の投稿のみ
                     self.postArray = querySnapshot!.documents.flatMap { document in
                         print("DEBUG_PRINT: document取得 \(document.documentID)")
@@ -226,6 +234,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                         }
                         return nil
                     }
+                    
+                    self.blockCheck2()
+                    
                     self.postArray2 = querySnapshot!.documents.flatMap { document in
                         print("DEBUG_PRINT: document取得 \(document.documentID)")
                         let data = document.data()
@@ -243,6 +254,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.postArray2.sort {
                         $0.likedTime > $1.likedTime
                     }
+                    
+                    self.blockCheck2()
+                    
                     //参加中の投稿のみ
                     self.postArray3 = querySnapshot!.documents.flatMap { document in
                         print("DEBUG_PRINT: document取得 \(document.documentID)")
@@ -301,7 +315,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func blockCheck() {
+    func blockCheck1() {
         if let myid = Auth.auth().currentUser?.uid {
             if listener_block == nil {
                 let postsRef_block = Firestore.firestore().collection("blockUsers").document(myid)
@@ -331,6 +345,92 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                                     return true
                                 }
                             }
+                            self.postArray3 = self.postArray3.filter {
+                                if blockUsers.contains($0.uid) {
+                                    return false
+                                } else {
+                                    return true
+                                }
+                            }
+                            let postCount = self.postArray.count
+                            self.postNumber.text = "\(postCount)"
+                            print("\(postCount)")
+                            let likeCount = self.postArray2.count
+                            self.likeNumber.text = "\(likeCount)"
+                            print("\(likeCount)")
+                            let joinCount = self.postArray3.count
+                            self.joinNumber.text = "\(joinCount)"
+                            print("\(joinCount)")
+                            print("blockUsers:\(blockUsers)")
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            }
+            print("block user list")
+            print("self.blockUserArray.description:\(self.blockUserArray.description)")
+        }
+    }
+    
+    func blockCheck2() {
+        if let myid = Auth.auth().currentUser?.uid {
+            if listener_block == nil {
+                let postsRef_block = Firestore.firestore().collection("blockUsers").document(myid)
+                postsRef_block.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                        print("Document data: \(dataDescription)")
+                    } else {
+                        print("Document does not exist")
+                    }
+                    let postDic = document?.data()
+                    if postDic != nil{
+                        if let blockUsers = postDic!["users"] as? [String] {
+                            self.blockUserArray = blockUsers
+                            
+                            self.postArray2 = self.postArray2.filter {
+                                if blockUsers.contains($0.uid) {
+                                    return false
+                                } else {
+                                    return true
+                                }
+                            }
+                            let postCount = self.postArray.count
+                            self.postNumber.text = "\(postCount)"
+                            print("\(postCount)")
+                            let likeCount = self.postArray2.count
+                            self.likeNumber.text = "\(likeCount)"
+                            print("\(likeCount)")
+                            let joinCount = self.postArray3.count
+                            self.joinNumber.text = "\(joinCount)"
+                            print("\(joinCount)")
+                            print("blockUsers:\(blockUsers)")
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            }
+            print("block user list")
+            print("self.blockUserArray.description:\(self.blockUserArray.description)")
+        }
+    }
+    
+    func blockCheck3() {
+        if let myid = Auth.auth().currentUser?.uid {
+            if listener_block == nil {
+                let postsRef_block = Firestore.firestore().collection("blockUsers").document(myid)
+                postsRef_block.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                        print("Document data: \(dataDescription)")
+                    } else {
+                        print("Document does not exist")
+                    }
+                    let postDic = document?.data()
+                    if postDic != nil{
+                        if let blockUsers = postDic!["users"] as? [String] {
+                            self.blockUserArray = blockUsers
+                            
                             self.postArray3 = self.postArray3.filter {
                                 if blockUsers.contains($0.uid) {
                                     return false

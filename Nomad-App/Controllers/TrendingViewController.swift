@@ -67,8 +67,6 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     @objc func refresh(sender: UIRefreshControl) {
         print("refresh")
         
-        blockCheck()
-        
         //現在時刻を取得
         let day = Date()
         //現在時刻から24時間前の日付を取得
@@ -81,6 +79,9 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                 print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                 return
             }
+            
+            self.blockCheck()
+            
             // 取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
             self.postArray = querySnapshot!.documents.flatMap { document in
                 print("DEBUG_PRINT: document取得 \(document.documentID)")
@@ -122,8 +123,6 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setToolbarHidden(true, animated: animated)
         
-        blockCheck()
-        
         if Auth.auth().currentUser != nil {
             // ログイン済み
             if listener == nil {
@@ -141,6 +140,9 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                         print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                         return
                     }
+                    
+                    self.blockCheck()
+                    
                     // 取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
                     self.postArray = querySnapshot!.documents.flatMap { document in
                         print("DEBUG_PRINT: document取得 \(document.documentID)")
