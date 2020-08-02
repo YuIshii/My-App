@@ -17,5 +17,6 @@ pod 'FirebaseUI/Storage'
 pod 'NotificationBannerSwift', '~> 3.0.0'
 pod 'PKHUD', '~> 5.0'
 pod 'LicensePlist'
+pod 'Google-Mobile-Ads-SDK'
 
 end
